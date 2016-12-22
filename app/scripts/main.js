@@ -2,16 +2,6 @@ var RestaurantOrdersApp = angular.module('OrdersApp', ['ngRoute', ]);
 
 // Define the `PhoneListController` controller on the `phonecatApp` module
 RestaurantOrdersApp.controller('OrdersController', function OrdersController($scope, $location) {
-    $scope.phones = [{
-        name: 'Nexus S',
-        snippet: 'Fast just got faster with Nexus S.'
-    }, {
-        name: 'Motorola XOOM™ with Wi-Fi',
-        snippet: 'The Next, Next Generation tablet.'
-    }, {
-        name: 'MOTOROLA XOOM™',
-        snippet: 'The Next, Next Generation tablet.'
-    }];
     $scope.italianBasePrice = 50;
     $scope.chineseBasePrice = 60;
     $scope.lebaneseBasePrice = 70;
@@ -68,23 +58,23 @@ RestaurantOrdersApp.controller('OrdersController', function OrdersController($sc
         } else {
             $scope.totalPrice -= 2;
         }
-    }
+    };
     $scope.addSpicy = function() {
-            if ($scope.spicy) {
-                $scope.totalPrice += 1;
-                $scope.addOn += " Spicy";
+        if ($scope.spicy) {
+            $scope.totalPrice += 1;
+            $scope.addOn += " Spicy";
 
-            } else {
-                $scope.totalPrice -= 1;
-            }
+        } else {
+            $scope.totalPrice -= 1;
         }
-        //updates total price after quantity is updated
+    };
+    //updates total price after quantity is updated
     $scope.addQuantity = function() {
-            if ($scope.quantity)
-                $scope.totalPrice *= $scope.quantity;
-            console.log($scope.quantity + "***");
-        }
-        //updates the list of orders in the invoice with the new order and clears form
+        if ($scope.quantity)
+            $scope.totalPrice *= $scope.quantity;
+        console.log($scope.quantity + "***");
+    };
+    //updates the list of orders in the invoice with the new order and clears form
     $scope.addOrder = function() {
         $scope.orders.push({ item: $scope.mealSelected, quantity: $scope.quantity, price: $scope.mealPrice, addOns: $scope.addOn, total: $scope.totalPrice });
         //update total price in the invoice
@@ -96,9 +86,21 @@ RestaurantOrdersApp.controller('OrdersController', function OrdersController($sc
         $scope.quantity = 1;
         $scope.combo = false;
         $scope.spicy = false;
+    };
+    //clear all when clicking new order
+    $scope.clearOrders = function() {
+        $scope.orders = [];
+        $scope.totalMealsPrice = 0;
+        //clearing form
+        $scope.addOn = '';
+        $scope.categorySelected = '';
+        $scope.mealSelected = '';
+        $scope.quantity = 1;
+        $scope.combo = false;
+        $scope.spicy = false;
     }
 });
-
+//routing configuration
 RestaurantOrdersApp.config(['$routeProvider',
     function($routeProvider) {
         // $locationProvider.hashPrefix('');

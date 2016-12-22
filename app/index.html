@@ -21,14 +21,14 @@
   <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-  <header class="container">
+  <header class="container" ng-controller="OrdersController">
     <div class="row">
       <h2>Restaurant Order</h2>
     </div>
     <div class="row">
       <div class="btn-group" role="group">
-        <a href='' class="btn btn-default" ng-click="goTo('/new_meal')">Add meal</a>
-        <button type="button" class="btn btn-default">Add order</button>
+        <button type="button" class="btn btn-default" ng-click="goTo('/new_meal')">Add meal</button>
+        <button type="button" class="btn btn-default" ng-click="goTo('/new_order')">Add order</button>
         <button type="button" class="btn btn-default">Reports</button>
       </div>
     </div>
@@ -36,6 +36,8 @@
   <div ng-view></div>
   <!-- build:js scripts/vendor.js -->
   <!-- bower:js -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="/bower_components/jquery/dist/jquery.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
