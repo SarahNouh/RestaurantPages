@@ -21,16 +21,21 @@ RestaurantOrdersApp.controller('OrdersController', function OrdersController($sc
     $scope.mealPrice = 0;
     $scope.totalMealsPrice = 0;
 
+    $scope.validateCategory = false;
+    $scope.validateMeal = false;
+    $scope.validateQuantity = false;
+
     $scope.newOrder = function() {
         $location.path('/new_meal');
         console.log($location.path() + '***');
     }
     $scope.goTo = function(path) {
         $location.path(path);
-        $scope.active = "active";
-        console.log('sdadad')
     };
     $scope.addCategoryPrice = function() {
+        //clear validation messages
+        $scope.validateCategory = false;
+
         if ($scope.categorySelected === 'Italian') {
             $scope.totalPrice = $scope.italianBasePrice;
             $scope.mealPrice = $scope.italianBasePrice;
@@ -70,12 +75,29 @@ RestaurantOrdersApp.controller('OrdersController', function OrdersController($sc
     };
     //updates total price after quantity is updated
     $scope.addQuantity = function() {
-        if ($scope.quantity)
+        $scope.validateQuantity = false;
+
+        if ($scope.quantity && $scope.quantity > 0)
             $scope.totalPrice *= $scope.quantity;
         console.log($scope.quantity + "***");
     };
-    //updates the list of orders in the invoice with the new order and clears form
+    //validates form, updates the list of orders in the invoice with the new order and clears form
     $scope.addOrder = function() {
+        console.log($scope.mealSelected + "///")
+        if ($scope.categorySelected === '') {
+            $scope.validateCategory = true;
+            // return false;
+        }
+        if ($scope.mealSelected === '') {
+            $scope.validateMeal = true;
+            // return false;
+        }
+        if ($scope.quantity <= 0) {
+            $scope.validateQuantity = true;
+        }
+        if ($scope.validateMeal || $scope.validateCategory || $scope.validateQuantity) {
+            return false;
+        }
         $scope.orders.push({ item: $scope.mealSelected, quantity: $scope.quantity, price: $scope.mealPrice, addOns: $scope.addOn, total: $scope.totalPrice });
         //update total price in the invoice
         $scope.totalMealsPrice += $scope.totalPrice;
@@ -86,6 +108,7 @@ RestaurantOrdersApp.controller('OrdersController', function OrdersController($sc
         $scope.quantity = 1;
         $scope.combo = false;
         $scope.spicy = false;
+        $scope.totalPrice = 0;
     };
     //clear all when clicking new order
     $scope.clearOrders = function() {
@@ -98,7 +121,9 @@ RestaurantOrdersApp.controller('OrdersController', function OrdersController($sc
         $scope.quantity = 1;
         $scope.combo = false;
         $scope.spicy = false;
-    }
+        $scope.totalPrice = 0;
+
+    };
 });
 //routing configuration
 RestaurantOrdersApp.config(['$routeProvider',

@@ -29,13 +29,14 @@ $icon-font-path: '../fonts/';
     }
 }
 
+.required {
+    color: red;
+}
+
 .new-meal {
     .meal-form {
         margin-top: 80px;
         margin-bottom: 40px;
-    }
-    .required {
-        color: red;
     }
     .image-container {
         margin-top: 40px;

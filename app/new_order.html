@@ -3,26 +3,29 @@
     <form>
       <div class="col-sm-6">
         <div class="form-group">
-          <label for="Category">Category</label>
-          <select class="form-control" ng-model='categorySelected' ng-change="addCategoryPrice()">
+          <label for="Category">Category <span class="required">*</span></label>
+          <select class="form-control" ng-model='categorySelected' ng-change="addCategoryPrice()" required>
             <option>Italian</option>
             <option>Lebanese</option>
             <option>Chinese</option>
             <option>Indian</option>
           </select>
+          <span ng-show="validateCategory" class="required">Please select a category</span>
         </div>
         <div class="form-group">
-          <label for="meal">meal</label>
-          <select class="form-control" ng-model='mealSelected'>
+          <label for="meal">meal <span class="required">*</span></label>
+          <select class="form-control" ng-model='mealSelected' ng-change="validateMeal = false;" required>
             <option>Pasta white sauce and grilled chicken</option>
             <option>Noodles and chicken curry</option>
             <option>Steak with white rice</option>
             <option>Country fried chicken</option>
           </select>
+          <span ng-show="validateMeal" class="required">Please select a meal</span>
         </div>
         <div class="form-group">
           <label for="q">q</label>
-          <input type="number" class="form-control" min='0' id="q" placeholder="q" ng-model="quantity" ng-change='addQuantity()'>
+          <input type="number" class="form-control" id="q" placeholder="q" ng-model="quantity" ng-change='addQuantity()'>
+          <span ng-show="validateQuantity" class="required">Please enter a value greater than 0</span>
         </div>
       </div>
       <div class="col-sm-4 checkboxes">
@@ -39,7 +42,7 @@
         <h3>Price {{totalPrice}} L.E.</h3>
       </div>
       <div class=" col-sm-2 btn-container ">
-        <button type="submit " class="btn btn-primary form-control " ng-click="addOrder() ">Add</button>
+        <button type="submit " class="btn btn-primary form-control " ng-click="addOrder()">Add</button>
       </div>
     </form>
   </div>
