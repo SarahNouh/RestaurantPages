@@ -1,6 +1,5 @@
 var RestaurantOrdersApp = angular.module('OrdersApp', ['ngRoute', ]);
 
-// Define the `PhoneListController` controller on the `phonecatApp` module
 RestaurantOrdersApp.controller('OrdersController', function OrdersController($scope, $location) {
     $scope.italianBasePrice = 50;
     $scope.chineseBasePrice = 60;
@@ -124,6 +123,17 @@ RestaurantOrdersApp.controller('OrdersController', function OrdersController($sc
         $scope.totalPrice = 0;
 
     };
+});
+
+RestaurantOrdersApp.controller('MealsController', function MealController($scope, $location) {
+    $scope.categorySelected = '';
+    $scope.invalidCategory = false;
+    $scope.validateCategorySelected = function() {
+        if ($scope.categorySelected === '') {
+            $scope.invalidCategory = true;
+            return false;
+        }
+    }
 });
 //routing configuration
 RestaurantOrdersApp.config(['$routeProvider',

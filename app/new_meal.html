@@ -1,4 +1,4 @@
-<div class="container new-meal" ng-controller='OrdersController'>
+<div class="container new-meal" ng-controller='MealsController'>
   <div class="row meal-form">
     <form>
       <div class="col-sm-6">
@@ -12,23 +12,25 @@
         </div>
         <div class="form-group">
           <label for="desc">Description <span class="required">*</span></label>
-          <textarea class="form-control" rows="3"></textarea>
+          <textarea class="form-control" rows="3" required></textarea>
         </div>
         <div class="form-group">
-          <label for="Category">Category</label>
+          <label for="Category">Category <span class="required">*</span></label>
           <select class="form-control" ng-model='categorySelected'>
             <option>Italian</option>
             <option>Lebanese</option>
             <option>Chinese</option>
             <option>Indian</option>
           </select>
+          <span ng-show="invalidCategory" class="required">Please select a category</span>
         </div>
-        <button type="submit" class="btn btn-primary pull-right">Save</button>
+        <button type="submit" class="btn btn-primary pull-right" ng-click="validateCategorySelected()">Save</button>
       </div>
     </form>
     <div class="col-sm-offset-2 col-sm-4 text-center image-container">
       <img src="http://placehold.it/300x200">
       <button class="btn btn-default">Select Image</button>
+      <!-- <input type="file" class="" name="select"> -->
     </div>
   </div>
 </div>
