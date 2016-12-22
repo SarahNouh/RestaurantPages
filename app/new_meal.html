@@ -1,0 +1,34 @@
+<div class="container new-meal" ng-controller='OrdersController'>
+  <div class="row meal-form">
+    <form>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="name">Name <span class="required">*</span></label>
+          <input type="text" class="form-control" id="name" placeholder="Name" required>
+        </div>
+        <div class="form-group">
+          <label for="price">Price <span class="required">*</span></label>
+          <input type="number" class="form-control" id="price" placeholder="Price" required>
+        </div>
+        <div class="form-group">
+          <label for="desc">Description <span class="required">*</span></label>
+          <textarea class="form-control" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="Category">Category</label>
+          <select class="form-control" ng-model='categorySelected'>
+            <option>Italian</option>
+            <option>Lebanese</option>
+            <option>Chinese</option>
+            <option>Indian</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary pull-right">Save</button>
+      </div>
+    </form>
+    <div class="col-sm-offset-2 col-sm-4 text-center image-container">
+      <img src="http://placehold.it/300x200">
+      <button class="btn btn-default">Select Image</button>
+    </div>
+  </div>
+</div>

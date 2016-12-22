@@ -1,0 +1,46 @@
+$icon-font-path: '../fonts/';
+// bower:scss
+@import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+// endbower
+.order {
+    border: 1px solid black;
+    margin-top: 20px;
+    padding: 10px;
+    h3 {
+        margin-top: 80px;
+        margin-bottom: 40px;
+    }
+    .checkboxes {
+        padding-left: 60px;
+        padding-top: 15px;
+    }
+    .btn-container {
+        margin-top: 180px;
+    }
+}
+
+.order-list {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 40px;
+    background-color: #f2f2f2;
+    table {
+        background-color: white;
+    }
+}
+
+.new-meal {
+    .meal-form {
+        margin-top: 80px;
+        margin-bottom: 40px;
+    }
+    .required {
+        color: red;
+    }
+    .image-container {
+        margin-top: 40px;
+        button {
+            margin-top: 40px;
+        }
+    }
+}

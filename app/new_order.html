@@ -1,0 +1,68 @@
+<div class="container" ng-controller='OrdersController'>
+  <div class="order row">
+    <form>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="Category">Category</label>
+          <select class="form-control" ng-model='categorySelected' ng-change="addCategoryPrice()">
+            <option>Italian</option>
+            <option>Lebanese</option>
+            <option>Chinese</option>
+            <option>Indian</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="meal">meal</label>
+          <select class="form-control" ng-model='mealSelected'>
+            <option>Pasta white sauce and grilled chicken</option>
+            <option>Noodles and chicken curry</option>
+            <option>Steak with white rice</option>
+            <option>Country fried chicken</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="q">q</label>
+          <input type="number" class="form-control" min='0' id="q" placeholder="q" ng-model="quantity" ng-change='addQuantity()'>
+        </div>
+      </div>
+      <div class="col-sm-4 checkboxes">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" ng-model="combo" ng-change="addCombo()"> Combo - add 2 L.E.
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" ng-model="spicy" ng-change="addSpicy()"> Spicy - add 1 L.E.
+          </label>
+        </div>
+        <h3>Price {{totalPrice}} L.E.</h3>
+      </div>
+      <div class=" col-sm-2 btn-container ">
+        <button type="submit " class="btn btn-primary form-control " ng-click="addOrder() ">Add</button>
+      </div>
+    </form>
+  </div>
+  <div class="order-list row ">
+    <table class="table table-bordered ">
+      <tr class="text-center">
+        <td>Item</td>
+        <td>Q</td>
+        <td>Price</td>
+        <td>Addons</td>
+        <td>Total</td>
+      </tr>
+      <tr ng-repeat="order in orders">
+        <td>{{order.item}}</td>
+        <td>{{order.quantity}}</td>
+        <td>{{order.price}}</td>
+        <td>{{order.addOns}}</td>
+        <td>{{order.total}}</td>
+      </tr>
+    </table>
+    <h3 class="pull-right ">Total {{totalMealsPrice}} L.E.</h3>
+  </div>
+  <div class="row ">
+    <button type="submit " class="btn btn-primary btn-lg pull-right " ng-click="goTo( '/new_order') ">New Order</button>
+  </div>
+</div>
