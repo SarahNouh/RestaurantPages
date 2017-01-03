@@ -4,15 +4,18 @@
       <div class="col-sm-6">
         <div class="form-group">
           <label for="name">Name <span class="required">*</span></label>
-          <input type="text" class="form-control" id="name" placeholder="Name" required>
+          <input type="text" class="form-control" id="name" placeholder="Name" ng-model="mealName" required>
+          <span ng-show="invalidName" class="required">Please type in a name</span>
         </div>
         <div class="form-group">
           <label for="price">Price <span class="required">*</span></label>
-          <input type="number" class="form-control" id="price" placeholder="Price" required>
+          <input type="number" class="form-control" id="price" placeholder="Price" ng-model="mealPrice" required>
+          <span ng-show="invalidPrice" class="required">Please write the meal's price</span>
         </div>
         <div class="form-group">
           <label for="desc">Description <span class="required">*</span></label>
-          <textarea class="form-control" rows="3" required></textarea>
+          <textarea class="form-control" rows="3" ng-model="mealDesc" required></textarea>
+          <span ng-show="invalidDesc" class="required">Please write a short description of the meal</span>
         </div>
         <div class="form-group">
           <label for="Category">Category <span class="required">*</span></label>
@@ -24,12 +27,14 @@
           </select>
           <span ng-show="invalidCategory" class="required">Please select a category</span>
         </div>
-        <button type="submit" class="btn btn-primary pull-right" ng-click="validateCategorySelected()">Save</button>
+        <button type="button" class="btn btn-primary pull-right" ng-click="validateForm(this)">Save</button>
       </div>
     </form>
     <div class="col-sm-offset-2 col-sm-4 text-center image-container">
-      <img src="http://placehold.it/300x200">
-      <button class="btn btn-default">Select Image</button>
+      <img id="mealImg" src="http://placehold.it/300x200">
+      <!-- <button class="btn btn-default">Select Image</button> -->
+      <input ng-model="photo" onchange="angular.element(this).scope().uploadImg(this)" type="file" accept="image/*" />
+      <!-- <canvas id="myCanvas" width="250" height="300" style="border:1px solid #d3d3d3;"> -->
       <!-- <input type="file" class="" name="select"> -->
     </div>
   </div>

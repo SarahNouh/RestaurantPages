@@ -127,13 +127,52 @@ RestaurantOrdersApp.controller('OrdersController', function OrdersController($sc
 
 RestaurantOrdersApp.controller('MealsController', function MealController($scope, $location) {
     $scope.categorySelected = '';
+    $scope.mealName = '';
+    $scope.mealPrice = '';
+    $scope.mealDesc = '';
+
     $scope.invalidCategory = false;
-    $scope.validateCategorySelected = function() {
+    $scope.invalidName = false;
+    $scope.invalidPrice = false;
+    $scope.invalidDesc = false;
+    $scope.invalidForm = false;
+
+    $scope.validateForm = function(form) {
         if ($scope.categorySelected === '') {
             $scope.invalidCategory = true;
+            $scope.invalidForm = true;
+        }
+        if ($scope.mealName === '') {
+            $scope.invalidName = true;
+            $scope.invalidForm = true;
+        }
+        if ($scope.mealPrice === '') {
+            $scope.invalidPrice = true;
+            $scope.invalidForm = true;
+        }
+        if ($scope.mealDesc === '') {
+            $scope.invalidDesc = true;
+            $scope.invalidForm = true;
+        }
+        if ($scope.invalidForm) {
             return false;
         }
-    }
+    };
+    $scope.uploadImg = function(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#mealImg')
+                    .attr('src', e.target.result)
+                    // .width(150)
+                    // .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    };
 });
 //routing configuration
 RestaurantOrdersApp.config(['$routeProvider',

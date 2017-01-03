@@ -40,8 +40,10 @@ $icon-font-path: '../fonts/';
     }
     .image-container {
         margin-top: 40px;
-        button {
-            margin-top: 40px;
+        #mealImg {
+            margin-bottom: 40px;
+            max-width: 100%;
+            max-height: 300px;
         }
     }
 }
