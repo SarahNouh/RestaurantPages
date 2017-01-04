@@ -4,22 +4,22 @@
       <div class="col-sm-6">
         <div class="form-group">
           <label for="name">Name <span class="required">*</span></label>
-          <input type="text" class="form-control" id="name" placeholder="Name" ng-model="mealName" required>
+          <input type="text" class="form-control" id="name" placeholder="Name" ng-model="mealName" ng-change="clearValidations()" required>
           <span ng-show="invalidName" class="required">Please type in a name</span>
         </div>
         <div class="form-group">
           <label for="price">Price <span class="required">*</span></label>
-          <input type="number" class="form-control" id="price" placeholder="Price" ng-model="mealPrice" required>
+          <input type="number" class="form-control" id="price" placeholder="Price" ng-model="mealPrice" ng-change="clearValidations()" required>
           <span ng-show="invalidPrice" class="required">Please write the meal's price</span>
         </div>
         <div class="form-group">
           <label for="desc">Description <span class="required">*</span></label>
-          <textarea class="form-control" rows="3" ng-model="mealDesc" required></textarea>
+          <textarea class="form-control" rows="3" ng-model="mealDesc" ng-change="clearValidations()" required></textarea>
           <span ng-show="invalidDesc" class="required">Please write a short description of the meal</span>
         </div>
         <div class="form-group">
           <label for="Category">Category <span class="required">*</span></label>
-          <select class="form-control" ng-model='categorySelected'>
+          <select class="form-control" ng-model='categorySelected' ng-change="clearValidations()">
             <option>Italian</option>
             <option>Lebanese</option>
             <option>Chinese</option>

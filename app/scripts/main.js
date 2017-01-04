@@ -137,6 +137,13 @@ RestaurantOrdersApp.controller('MealsController', function MealController($scope
     $scope.invalidDesc = false;
     $scope.invalidForm = false;
 
+    $scope.clearValidations = function() {
+        $scope.invalidCategory = false;
+        $scope.invalidName = false;
+        $scope.invalidPrice = false;
+        $scope.invalidDesc = false;
+        $scope.invalidForm = false;
+    }
     $scope.validateForm = function(form) {
         if ($scope.categorySelected === '') {
             $scope.invalidCategory = true;
