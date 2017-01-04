@@ -57,19 +57,19 @@ RestaurantOrdersApp.controller('OrdersController', function OrdersController($sc
     }
     $scope.addCombo = function() {
         if ($scope.combo) {
-            $scope.totalPrice += 2;
+            $scope.totalPrice += $scope.quantity * 2;
             $scope.addOn += " Combo";
         } else {
-            $scope.totalPrice -= 2;
+            $scope.totalPrice -= $scope.quantity * 2;
         }
     };
     $scope.addSpicy = function() {
         if ($scope.spicy) {
-            $scope.totalPrice += 1;
+            $scope.totalPrice += $scope.quantity * 1;
             $scope.addOn += " Spicy";
 
         } else {
-            $scope.totalPrice -= 1;
+            $scope.totalPrice -= $scope.quantity * 1;
         }
     };
     //updates total price after quantity is updated
